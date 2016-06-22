@@ -24,7 +24,7 @@ func CoreNetMetrics(ifacePrefix []string) []*model.MetricValue {
 
 	for idx, netIf := range netIfs {
 		iface := "iface=" + netIf.Iface
-		ret[idx*20+0] = CounterValue("net.if.in.bytes", netIf.InBytes, iface)
+		ret[idx*20+0] = CounterValue("net.if.in.Mbits", netIf.InBytes*8/100000, iface)
 		ret[idx*20+1] = CounterValue("net.if.in.packets", netIf.InPackages, iface)
 		ret[idx*20+2] = CounterValue("net.if.in.errors", netIf.InErrors, iface)
 		ret[idx*20+3] = CounterValue("net.if.in.dropped", netIf.InDropped, iface)
@@ -32,7 +32,7 @@ func CoreNetMetrics(ifacePrefix []string) []*model.MetricValue {
 		ret[idx*20+5] = CounterValue("net.if.in.frame.errs", netIf.InFrameErrs, iface)
 		ret[idx*20+6] = CounterValue("net.if.in.compressed", netIf.InCompressed, iface)
 		ret[idx*20+7] = CounterValue("net.if.in.multicast", netIf.InMulticast, iface)
-		ret[idx*20+8] = CounterValue("net.if.out.bytes", netIf.OutBytes, iface)
+		ret[idx*20+8] = CounterValue("net.if.out.Mbits", netIf.OutBytes*8/100000, iface)
 		ret[idx*20+9] = CounterValue("net.if.out.packets", netIf.OutPackages, iface)
 		ret[idx*20+10] = CounterValue("net.if.out.errors", netIf.OutErrors, iface)
 		ret[idx*20+11] = CounterValue("net.if.out.dropped", netIf.OutDropped, iface)
